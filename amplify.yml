@@ -6,7 +6,7 @@ frontend:
       commands: flutter build web --release
   artifacts:
     # IMPORTANT - Please verify your build output directory
-    baseDirectory: ./build/web/
+    baseDirectory: ./frontend/build/web/
     files:
       - '**/*'
   cache:
