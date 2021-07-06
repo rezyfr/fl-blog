@@ -1,18 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:portofolio/common/constant.dart';
+import 'package:portofolio/common/responsive_widget.dart';
 import 'package:portofolio/common/styles.dart';
 import 'appbar_item.dart';
 
-class HomeAppbar extends StatelessWidget {
+class HomeAppbar extends StatefulWidget {
+  @override
+  State<HomeAppbar> createState() => _HomeAppbarState();
+}
+
+class _HomeAppbarState extends State<HomeAppbar> {
   @override
   Widget build(BuildContext context) {
+    return ResponsiveWidget(
+      largeScreen: _buildMainAppbar(context),
+      mediumScreen: _buildMainAppbar(context),
+      smallScreen: _buildSecondaryAppbar(context),
+    );
+  }
+
+  Widget _buildSecondaryAppbar(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.all(24),
-      padding: EdgeInsets.all(32),
+      padding: EdgeInsets.fromLTRB(24,24, 24, 40),
       child: Row(
         children: [
-          Text(
-            'Logo',
-            style: Theme.of(context).textTheme.headline4,
+          Hero(
+            tag: "logo",
+            child: Text(
+              'Logo',
+              style: Theme.of(context).textTheme.headline4!.copyWith(color: whiteColor),
+            ),
+          ),
+          Spacer(),
+          Material(
+            color: navyColor,
+            child: IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: cyanColor,
+              ),
+              onPressed: () {
+                scaffoldKey.currentState!.openDrawer();
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMainAppbar(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      padding: EdgeInsets.fromLTRB(32,32, 32, 100),
+      child: Row(
+        children: [
+          Hero(
+            tag: "logo",
+            child: Text(
+              'Logo',
+              style: Theme.of(context).textTheme.headline4,
+            ),
           ),
           Spacer(),
           AppbarItem(title: "About", number: "01", onPress: () {}),
@@ -48,4 +97,5 @@ class HomeAppbar extends StatelessWidget {
       ),
     );
   }
+
 }

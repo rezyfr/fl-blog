@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portofolio/ui/screen/splash_screen.dart';
 
 import 'common/styles.dart';
 import 'ui/screen/home_screen.dart';
@@ -11,14 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Rezy FR ',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: myTextTheme,
         backgroundColor: navyColor
       ),
-      home: HomeScreen(),
+      home: SplashScreen(),
     );
   }
 }

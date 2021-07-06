@@ -8,21 +8,30 @@ final Color grayColor = Color(0xff8892b0);
 final Color lightGrayColor = Color(0xffa8b2d1);
 final Color lightestGrayColor = Color(0xffccd6f6);
 
+final double headline2FontSize = 64.0;
+final double headline4FontSize = 32.0;
+final double subtitle1FontSize = 15.0;
+final double subtitle2FontSize = 13.0;
+final double body1FontSize = 18.0;
+final double body2FontSize = 14.0;
+final double buttonFontSize = 16.0;
+final double captionFontSize = 13.0;
+
 final TextTheme myTextTheme = TextTheme(
   headline2: GoogleFonts.heebo(
-      fontSize: 64, fontWeight: FontWeight.w700, letterSpacing: -0.5),
+      fontSize: headline2FontSize, fontWeight: FontWeight.w700, letterSpacing: -0.5),
   headline4: GoogleFonts.heebo(
-      fontSize: 32, fontWeight: FontWeight.w500, letterSpacing: 0.25),
+      fontSize: headline4FontSize, fontWeight: FontWeight.w500, letterSpacing: 0.25),
   subtitle1: GoogleFonts.heebo(
-      fontSize: 15, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+      fontSize: subtitle1FontSize, fontWeight: FontWeight.w400, letterSpacing: 0.15),
   subtitle2: GoogleFonts.heebo(
-      fontSize: 13, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+      fontSize: subtitle2FontSize, fontWeight: FontWeight.w500, letterSpacing: 0.1),
   bodyText1: GoogleFonts.bitter(
-      fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+      fontSize: body1FontSize, fontWeight: FontWeight.w400, letterSpacing: 0.5),
   bodyText2: GoogleFonts.bitter(
-      fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
+      fontSize: body2FontSize, fontWeight: FontWeight.w400, letterSpacing: 0.25),
   button: GoogleFonts.bitter(
-      fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 1.25),
+      fontSize: buttonFontSize, fontWeight: FontWeight.w500, letterSpacing: 1.25),
   caption: GoogleFonts.bitter(
-      fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.4),
+      fontSize: captionFontSize, fontWeight: FontWeight.w400, letterSpacing: 0.4),
 );

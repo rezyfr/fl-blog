@@ -1,83 +1,158 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:portofolio/common/constant.dart';
+import 'package:portofolio/common/responsive_widget.dart';
 import 'package:portofolio/common/styles.dart';
 import 'package:portofolio/widget/home_appbar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static String routeName = '/home_screen';
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _animation = Tween(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(_controller);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _controller.forward();
     Size size = MediaQuery.of(context).size;
-    return Container(
-      height: size.height,
-      width: size.width,
-      child: Column(
-        children: [
-          HomeAppbar(),
-          Container(
-            margin: EdgeInsets.all(24),
-            padding: EdgeInsets.all(32),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: (size.width / 10)),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 20.0),
-                        child: Text(
-                          'Hello, my name is',
-                          style: Theme.of(context)
-                              .textTheme
-                              .button!
-                              .copyWith(color: cyanColor),
-                          textAlign: TextAlign.left,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: navyColor,
+      drawer: Drawer(
+        child: Text("Test"),
+      ),
+      body: FadeTransition(
+        opacity: _animation,
+        child: Container(
+          height: size.height,
+          width: size.width,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HomeAppbar(),
+                Container(
+                  margin: EdgeInsets.symmetric(
+                      horizontal: getHorizontalAppbarMargin(),
+                      vertical: size.width / 100),
+                  child: Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20.0),
+                          child: Text(
+                            'Hello, my name is',
+                            style: Theme.of(context)
+                                .textTheme
+                                .button!
+                                .copyWith(color: cyanColor),
+                            textAlign: TextAlign.left,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 80,
-                        child: Text(
-                          'Fidriyanto Rizkillah.',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline2!
-                              .copyWith(color: whiteColor),
-                          textAlign: TextAlign.left,
+                        _buildMainText(context, true, size),
+                        _buildMainText(context, false, size),
+                        Container(
+                          padding: const EdgeInsets.only(top: 16),
+                          width: ResponsiveWidget.isSmallScreen(context)
+                              ? null
+                              : size.width / 2,
+                          child: Text(
+                            'I\'m a Jakarta-based software engineer who specializes in building exceptional mobile applications offering 2-years of experience on Android Development. '
+                            '\n\nCurrently, I\'m building an impactful platform to support micro-entrepreneurs in Indonesia.'
+                            ' I also expanding my area of knowledge to Back-End Development and Cloud Computing.',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(color: grayColor),
+                            textAlign: TextAlign.left,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'I build things for your app.',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline2!
-                            .copyWith(color: grayColor),
-                        textAlign: TextAlign.left,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 16),
-                        width: size.width / 2,
-                        child: Text(
-                          'I\'m a Jakarta-based software engineer who specializes in building exceptional mobile applications offering 2-years of experience on Android Development. '
-                              '\n\nCurrently, I\'m building an impactful platform to support micro-entrepreneurs in Indonesia.'
-                              ' I also expanding my area of knowledge to Back-End Development and Cloud Computing.',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2!
-                              .copyWith(color: grayColor),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                )
+              ],
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
+  }
+
+  double getHorizontalAppbarMargin() {
+    if (ResponsiveWidget.isLargeScreen(context)) {
+      return 100.0;
+    } else if (ResponsiveWidget.isMediumScreen(context)) {
+      return 50.0;
+    } else {
+      return 25.0;
+    }
+  }
+
+  // double getHorizontalAppbarMargin() {
+  //   if (ResponsiveWidget.isLargeScreen(context)) {
+  //     return 100.0;
+  //   } else if (ResponsiveWidget.isMediumScreen(context)) {
+  //     return 50.0;
+  //   } else {
+  //     return 25.0;
+  //   }
+  // }
+
+  Widget _buildMainText(BuildContext context, bool isName, Size size) {
+    final name = 'Fidriyanto Rizkillah.';
+    final motto = 'I build things for your app.';
+    if (ResponsiveWidget.isLargeScreen(context)) {
+      return Text(
+        isName ? name : motto,
+        textAlign: TextAlign.left,
+        style: Theme.of(context).textTheme.headline2!.copyWith(
+            color: isName ? whiteColor : grayColor,
+            fontSize: headline2FontSize),
+      );
+    } else if (ResponsiveWidget.isMediumScreen(context)) {
+      return Text(
+        isName ? name : motto,
+        textAlign: TextAlign.left,
+        style: Theme.of(context)
+            .textTheme
+            .headline2!
+            .copyWith(color: isName ? whiteColor : grayColor, fontSize: 48),
+      );
+    } else {
+      return Text(
+        isName ? name : motto,
+        textAlign: TextAlign.left,
+        style: Theme.of(context)
+            .textTheme
+            .headline2!
+            .copyWith(color: isName ? whiteColor : grayColor, fontSize: 36),
+      );
+    }
   }
 }
