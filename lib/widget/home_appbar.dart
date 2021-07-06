@@ -20,9 +20,8 @@ class _HomeAppbarState extends State<HomeAppbar> {
   }
 
   Widget _buildSecondaryAppbar(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.fromLTRB(24,24, 24, 40),
+      padding: EdgeInsets.fromLTRB(24,24, 24, 64),
       child: Row(
         children: [
           Hero(
@@ -51,7 +50,6 @@ class _HomeAppbarState extends State<HomeAppbar> {
   }
 
   Widget _buildMainAppbar(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.fromLTRB(32,32, 32, 100),
       child: Row(
@@ -60,7 +58,7 @@ class _HomeAppbarState extends State<HomeAppbar> {
             tag: "logo",
             child: Text(
               'Logo',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline4!.copyWith(color: whiteColor),
             ),
           ),
           Spacer(),
@@ -97,5 +95,4 @@ class _HomeAppbarState extends State<HomeAppbar> {
       ),
     );
   }
-
 }
