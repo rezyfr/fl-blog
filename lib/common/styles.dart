@@ -8,7 +8,7 @@ final Color grayColor = Color(0xff8892b0);
 final Color lightGrayColor = Color(0xffa8b2d1);
 final Color lightestGrayColor = Color(0xffccd6f6);
 
-final double headline2FontSize = 64.0;
+final double headline2FontSize = 60.0;
 final double headline4FontSize = 32.0;
 final double subtitle1FontSize = 15.0;
 final double subtitle2FontSize = 13.0;

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         textTheme: myTextTheme,
         backgroundColor: navyColor
       ),
-      home: SplashScreen(),
+      home: HomeScreen(),
     );
   }
 }

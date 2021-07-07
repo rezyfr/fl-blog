@@ -21,7 +21,7 @@ class _HomeAppbarState extends State<HomeAppbar> {
 
   Widget _buildSecondaryAppbar(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(24,24, 24, 64),
+      padding: EdgeInsets.fromLTRB(24,24, 24, 48),
       child: Row(
         children: [
           Hero(
@@ -51,7 +51,7 @@ class _HomeAppbarState extends State<HomeAppbar> {
 
   Widget _buildMainAppbar(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(32,32, 32, 100),
+      padding: EdgeInsets.fromLTRB(32,32, 32, 64),
       child: Row(
         children: [
           Hero(
