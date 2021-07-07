@@ -33,17 +33,17 @@ class _SplashScreenState extends State<SplashScreen> {
           tag: "logo",
           child: ResponsiveWidget(
             largeScreen: Lottie.asset(
-              'assets/splash_screen.json',
+              'splash_screen.json',
               width: 250,
               height: 250,
             ),
             mediumScreen: Lottie.asset(
-              'assets/splash_screen.json',
+              'plash_screen.json',
               width: 200,
               height: 200,
             ),
             smallScreen: Lottie.asset(
-              'assets/splash_screen.json',
+              'splash_screen.json',
               width: 150,
               height: 150,
             ),

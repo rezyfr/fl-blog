@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen>
                       margin: const EdgeInsets.only(bottom: 24),
                       child: InkWell(
                         child: SvgPicture.asset(
-                          'icon/icon_twitter.svg',
+                          'icon_twitter.svg',
                         ),
                       ),
                     ),
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen>
                       margin: const EdgeInsets.only(bottom: 24),
                       child: InkWell(
                         child: SvgPicture.asset(
-                          'icon/icon_instagram.svg',
+                          'icon_instagram.svg',
                         ),
                       ),
                     ),
@@ -129,13 +129,13 @@ class _HomeScreenState extends State<HomeScreen>
                       margin: const EdgeInsets.only(bottom: 24),
                       child: InkWell(
                         child: SvgPicture.asset(
-                          'icon/icon_linkedin.svg',
+                          'icon_linkedin.svg',
                         ),
                       ),
                     ),
                     InkWell(
                       child: SvgPicture.asset(
-                        'icon/icon_github.svg',
+                        'icon_github.svg',
                       ),
                     ),
                   ],
