@@ -27,7 +27,7 @@ final TextTheme myTextTheme = TextTheme(
   subtitle2: GoogleFonts.heebo(
       fontSize: subtitle2FontSize, fontWeight: FontWeight.w500, letterSpacing: 0.1),
   bodyText1: GoogleFonts.bitter(
-      fontSize: body1FontSize, fontWeight: FontWeight.w400, letterSpacing: 0.5),
+      fontSize: body1FontSize, fontWeight: FontWeight.w400, letterSpacing: 1),
   bodyText2: GoogleFonts.bitter(
       fontSize: body2FontSize, fontWeight: FontWeight.w400, letterSpacing: 0.25),
   button: GoogleFonts.bitter(

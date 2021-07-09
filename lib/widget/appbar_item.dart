@@ -28,7 +28,7 @@ class _AppbarItemState extends State<AppbarItem> {
       color: navyColor,
       child: ResponsiveWidget(
         largeScreen: InkWell(
-          onTap: widget.onPress,
+          onTap: () => widget.onPress,
           onHover: (hover){
             setState((){
               textColor = hover ? cyanColor : whiteColor;

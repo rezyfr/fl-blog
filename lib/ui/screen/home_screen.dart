@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portofolio/common/constant.dart';
 import 'package:portofolio/common/responsive_widget.dart';
 import 'package:portofolio/common/styles.dart';
+import 'package:portofolio/widget/contact_item.dart';
 import 'package:portofolio/widget/home_appbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -84,14 +85,14 @@ class _HomeScreenState extends State<HomeScreen>
                             width: ResponsiveWidget.isSmallScreen(context)
                                 ? null
                                 : size.width / 3,
-                            child: Text(
-                              'I\'m a Jakarta-based software engineer who specializes in building exceptional mobile applications offering 2-years of experience on Android Development. '
-                              '\n\nCurrently, I\'m building an impactful platform to support micro-entrepreneurs in Indonesia.'
-                              ' I also expanding my area of knowledge to Back-End Development and Cloud Computing.',
+                            child: Text('A Jakarta-based software engineer who specializes in building exceptional mobile application with no experience of hacking someone\'s Instagram :).'
+                              // 'I\'m a Jakarta-based software engineer who specializes in building exceptional mobile applications offering 2-years of experience on Android Development. '
+                              '\n\nCurrently, I\'m building an impactful platform to support micro-entrepreneurs in Indonesia.',
+                              // ' I also expanding my area of knowledge to Back-End Development and Cloud Computing.',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyText2!
-                                  .copyWith(color: grayColor),
+                                  .copyWith(color: grayColor, fontSize: 15),
                               textAlign: TextAlign.left,
                             ),
                           ),
@@ -109,34 +110,21 @@ class _HomeScreenState extends State<HomeScreen>
                 margin: const EdgeInsets.fromLTRB(48, 24, 24, 24),
                 child: Column(
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 24),
-                      child: InkWell(
-                        child: SvgPicture.asset(
-                          'icon_twitter.svg',
-                        ),
-                      ),
+                    ContactItem(
+                      assets: 'icon_instagram.svg',
+                      url: 'https://www.instagram.com/rezyfr',
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 24),
-                      child: InkWell(
-                        child: SvgPicture.asset(
-                          'icon_instagram.svg',
-                        ),
-                      ),
+                    ContactItem(
+                      assets: 'icon_twitter.svg',
+                      url: 'https://twitter.com/rezyfr',
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 24),
-                      child: InkWell(
-                        child: SvgPicture.asset(
-                          'icon_linkedin.svg',
-                        ),
-                      ),
+                    ContactItem(
+                      assets: 'icon_linkedin.svg',
+                      url: 'https://linkedin.com/in/rezyfr',
                     ),
-                    InkWell(
-                      child: SvgPicture.asset(
-                        'icon_github.svg',
-                      ),
+                    ContactItem(
+                      assets: 'icon_github.svg',
+                      url: 'https://github.com/rezyfr',
                     ),
                   ],
                 ),
