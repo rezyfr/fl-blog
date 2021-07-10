@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: navyColor,
         canvasColor: lightNavyColor,
       ),
-      home: HomeScreen(),
+      home: SplashScreen(),
     );
   }
 }
