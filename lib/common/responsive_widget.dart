@@ -41,3 +41,14 @@ class ResponsiveWidget extends StatelessWidget {
     );
   }
 }
+
+
+double getHorizontalAppbarMargin(BuildContext context) {
+  if (ResponsiveWidget.isLargeScreen(context)) {
+    return 200.0;
+  } else if (ResponsiveWidget.isMediumScreen(context)) {
+    return 125.0;
+  } else {
+    return 25.0;
+  }
+}

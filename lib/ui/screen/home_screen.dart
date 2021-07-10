@@ -4,8 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portofolio/common/constant.dart';
 import 'package:portofolio/common/responsive_widget.dart';
 import 'package:portofolio/common/styles.dart';
+import 'package:portofolio/widget/animated_button.dart';
+import 'package:portofolio/widget/contact_bar.dart';
 import 'package:portofolio/widget/contact_item.dart';
 import 'package:portofolio/widget/home_appbar.dart';
+
+import 'about_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = '/home_screen';
@@ -43,9 +47,7 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: navyColor,
-      drawer: Drawer(
-        child: Text("Test"),
-      ),
+      drawer: Drawer(),
       body: FadeTransition(
         opacity: _animation,
         child: Stack(
@@ -60,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen>
                     HomeAppbar(),
                     Container(
                       margin: EdgeInsets.symmetric(
-                        horizontal: getHorizontalAppbarMargin(),
+                        horizontal: getHorizontalAppbarMargin(context),
                         vertical: size.width / 100,
                       ),
                       child: Column(
@@ -84,66 +86,50 @@ class _HomeScreenState extends State<HomeScreen>
                             padding: const EdgeInsets.only(top: 16),
                             width: ResponsiveWidget.isSmallScreen(context)
                                 ? null
-                                : size.width / 3,
-                            child: Text('A Jakarta-based software engineer who specializes in building exceptional mobile application with no experience of hacking someone\'s Instagram :).'
+                                : size.width / 2.5,
+                            child: Text(
+                              'A Jakarta-based software engineer who specializes in building exceptional mobile application with no experience of hacking someone\'s Instagram :).'
                               // 'I\'m a Jakarta-based software engineer who specializes in building exceptional mobile applications offering 2-years of experience on Android Development. '
                               '\n\nCurrently, I\'m building an impactful platform to support micro-entrepreneurs in Indonesia.',
                               // ' I also expanding my area of knowledge to Back-End Development and Cloud Computing.',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyText2!
-                                  .copyWith(color: grayColor, fontSize: 15),
+                                  .copyWith(
+                                      color: lightGrayColor, fontSize: 15),
                               textAlign: TextAlign.left,
                             ),
                           ),
+                          Container(margin: EdgeInsets.only(top: 48),child: AnimatedButton(text: "Get In Touch", onPress: () {}, padding: 24))
                         ],
                       ),
                     ),
+                    AboutScreen(),
+                    SmallScreenContact(),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 16),
+                      child: Center(
+                        child: Text(
+                          'Design inspired by Brittany Chiang'
+                          '\nFidriyanto Rizkillah © 2021',
+                          style: Theme.of(context).textTheme.caption!.copyWith(
+                                color: lightGrayColor,
+                                fontSize: 10,
+                                height: 1.5,
+                              ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
-            Positioned(
-              left: 0,
-              bottom: 0,
-              child: Container(
-                margin: const EdgeInsets.fromLTRB(48, 24, 24, 24),
-                child: Column(
-                  children: [
-                    ContactItem(
-                      assets: 'icon_instagram.svg',
-                      url: 'https://www.instagram.com/rezyfr',
-                    ),
-                    ContactItem(
-                      assets: 'icon_twitter.svg',
-                      url: 'https://twitter.com/rezyfr',
-                    ),
-                    ContactItem(
-                      assets: 'icon_linkedin.svg',
-                      url: 'https://linkedin.com/in/rezyfr',
-                    ),
-                    ContactItem(
-                      assets: 'icon_github.svg',
-                      url: 'https://github.com/rezyfr',
-                    ),
-                  ],
-                ),
-              ),
-            )
+            LargeScreenContact(),
           ],
         ),
       ),
     );
-  }
-
-  double getHorizontalAppbarMargin() {
-    if (ResponsiveWidget.isLargeScreen(context)) {
-      return 200.0;
-    } else if (ResponsiveWidget.isMediumScreen(context)) {
-      return 125.0;
-    } else {
-      return 25.0;
-    }
   }
 
   Widget _buildMainText(BuildContext context, bool isName, Size size) {
@@ -154,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen>
         isName ? name : motto,
         textAlign: TextAlign.left,
         style: Theme.of(context).textTheme.headline2!.copyWith(
-              color: isName ? whiteColor : grayColor,
+              color: isName ? whiteColor : lightGrayColor,
               fontSize: headline2FontSize,
             ),
       );
@@ -162,19 +148,15 @@ class _HomeScreenState extends State<HomeScreen>
       return Text(
         isName ? name : motto,
         textAlign: TextAlign.left,
-        style: Theme.of(context)
-            .textTheme
-            .headline2!
-            .copyWith(color: isName ? whiteColor : grayColor, fontSize: 46),
+        style: Theme.of(context).textTheme.headline2!.copyWith(
+            color: isName ? whiteColor : lightGrayColor, fontSize: 46),
       );
     } else {
       return Text(
         isName ? name : motto,
         textAlign: TextAlign.left,
-        style: Theme.of(context)
-            .textTheme
-            .headline2!
-            .copyWith(color: isName ? whiteColor : grayColor, fontSize: 36),
+        style: Theme.of(context).textTheme.headline2!.copyWith(
+            color: isName ? whiteColor : lightGrayColor, fontSize: 36),
       );
     }
   }

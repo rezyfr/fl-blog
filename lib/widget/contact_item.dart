@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portofolio/common/responsive_widget.dart';
 import 'package:portofolio/common/styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -50,7 +51,10 @@ class _ContactItemState extends State<ContactItem>
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: widget.marginBottom ?? 24),
+      margin: EdgeInsets.only(
+          bottom: ResponsiveWidget.isLargeScreen(context)
+              ? (widget.marginBottom ?? 24)
+              : 0),
       child: ScaleTransition(
         scale: _animation,
         child: InkWell(
@@ -62,6 +66,8 @@ class _ContactItemState extends State<ContactItem>
           child: SvgPicture.asset(
             widget.assets,
             color: iconColor,
+            width: ResponsiveWidget.isLargeScreen(context) ? 24 : 20,
+            height: ResponsiveWidget.isLargeScreen(context) ? 24 : 20,
           ),
           onTap: () => _launchURL(),
         ),

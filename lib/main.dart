@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: myTextTheme,
-        backgroundColor: navyColor
+        backgroundColor: navyColor,
+        canvasColor: lightNavyColor,
       ),
       home: HomeScreen(),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final Color navyColor = Color(0xff0a192f);
+final Color lightNavyColor = Color(0xff112240);
 final Color whiteColor = Color(0xffe6f1ff);
 final Color cyanColor = Color(0xff64ffda);
 final Color grayColor = Color(0xff8892b0);
